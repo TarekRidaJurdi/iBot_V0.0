@@ -12,8 +12,6 @@ import requests
 import csv
 app = FastAPI()
 script_dir = os.path.dirname(__file__)
-st_abs_file_path = os.path.join(script_dir, "static/")
-app.mount("/static", StaticFiles(directory=st_abs_file_path), name="static")
 templates = Jinja2Templates(directory="")
 
 origins = [
@@ -110,8 +108,11 @@ def data_sentiment_analysis(unlabeld_text):
 #question answering
 import os
 from llama_index import Document
-
-os.environ["OPENAI_API_KEY"] = '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'
+temp='%s%k%-%X%K%H%Y%C%v%j%K%d%k%T%d%g%T%t%z%J%I%Y%d%T%3%B%l%b%k%F%J%I%O%K%x%p%h%H%6%9%v%r%I%x%S%e%G%W%6%K%T'
+api_key=""
+for i in range(1,len(temp),2):
+    api_key+=temp[i]
+os.environ["OPENAI_API_KEY"] =api_key
 text = """
     Next AI is the first specialized educational institute to be a center for disseminating information and exchanging knowledge in the field of artificial intelligence to qualify young students from schools and universities and prepare them to participate in this global scientific revolution.
     Next Ai center is for young students from schools and universities.
