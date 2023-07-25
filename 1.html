@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>عرض محتوى ملف CSV في جدول</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <table id="csvTable"></table>
+
+  <script src="script.js"></script>
+  <script>
+// استدعاء ملف CSV باستخدام XMLHttpRequest
+function loadCSV() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var csvData = xhr.responseText;
+      displayCSV(csvData);
+    }
+  };
+  xhr.open("GET", "data.csv", true);
+  xhr.send();
+}
+
+// عرض محتوى CSV في الجدول
+function displayCSV(csvData) {
+  var csvTable = document.getElementById("csvTable");
+  var lines = csvData.split("\n");
+  
+  // إنشاء صف العنوان
+  var headerRow = document.createElement("tr");
+  var headers = lines[0].split(",");
+  for (var i = 0; i < headers.length; i++) {
+    var headerCell = document.createElement("th");
+    headerCell.textContent = headers[i];
+    headerRow.appendChild(headerCell);
+  }
+  csvTable.appendChild(headerRow);
+  
+  // إنشاء صفوف البيانات
+  for (var j = 1; j < lines.length; j++) {
+    var dataRow = document.createElement("tr");
+    var data = lines[j].split(",");
+    for (var k = 0; k < data.length; k++) {
+      var dataCell = document.createElement("td");
+      dataCell.textContent = data[k];
+      dataRow.appendChild(dataCell);
+    }
+    csvTable.appendChild(dataRow);
+  }
+}
+
+// تنفيذ الدالة عند تحميل الصفحة
+window.onload = function() {
+  loadCSV();
+};
+
+</script>
+</body>
+</html>

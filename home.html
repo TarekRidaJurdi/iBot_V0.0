@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <title>iBot</title>
+    <style>
+        .service-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .service-card .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .service-card .card-button {
+            background-color: #cce6d2;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center mt-5">
+                    <h1>iBot Services</h1>
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="service-card">
+                                <h2 class="card-title">Question Answering</h2>
+                                <button class="card-button" id="Question_Answering">start</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="service-card">
+                                <h2 class="card-title">Sentiment Analysis</h2>
+                                <button class="card-button" id="sentiment_analysis">start</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="service-card">
+                                <h2 class="card-title">Text Classification</h2>
+                                <button class="card-button" id="Text_Classification">start</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
+    <script>
+        const Question_Answering_Button = document.getElementById('Question_Answering');
+        Question_Answering_Button.addEventListener('click', () => {
+            window.location.href = '/question_answering'; // تحويل المستخدم إلى رابط question_answering
+        });
+        const Text_Classification_Button = document.getElementById('Text_Classification');
+        Text_Classification_Button.addEventListener('click', () => {
+            window.location.href = '/text_classification'; // تحويل المستخدم إلى رابط question_answering
+        });
+        const sentiment_Button = document.getElementById('sentiment_analysis');
+        sentiment_Button.addEventListener('click', () => {
+            window.location.href = '/sentiment_analysis'; // تحويل المستخدم إلى رابط question_answering
+        });
+    </script>
+</body>
+</html>
